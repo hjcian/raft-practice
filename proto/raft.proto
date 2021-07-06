@@ -1,0 +1,26 @@
+syntax = "proto3";
+option go_package = "raftpractice/grpcproto";
+
+// The greeting service definition.
+service Node {
+    // Sends a greeting
+    rpc RequestVote (RequestVoteMsg) returns (RequestVoteReply) {}
+    rpc AppendEntries (AppendEntriesMsg) returns (AppendEntriesReply) {}
+  }
+
+  message RequestVoteMsg {
+    int32 term = 1;
+  }
+
+  message RequestVoteReply {
+    bool vote = 1;
+  }
+
+  message AppendEntriesMsg {
+    int32 term = 1;
+    string entries = 2;
+  }
+
+  message AppendEntriesReply {
+      bool ok = 1;
+  }
